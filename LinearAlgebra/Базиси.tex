@@ -1,0 +1,128 @@
+\documentclass[a4paper,12pt,fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[english,bulgarian]{babel}
+\usepackage{amsthm,amsfonts,amsmath,amssymb,bbm}
+\usepackage{fullpage}
+\usepackage{esvect}
+
+\newcounter{problem}
+\newcommand\problem{%
+  \stepcounter{problem}%
+  \textbf{\theproblem.}~%
+}
+\newcommand\solution{%
+  \textbf{Решение:}~%
+}
+\parindent 0in
+\parskip 1em
+\title{Базиси, координати и размерност в крайномерни линейни пространства}
+\author{Антъни Господинов}
+\date{}
+
+\begin{document}
+\maketitle
+
+    \problem{
+      Да се докаже, че ако \( \textbf{S}=\left( s_{1},\dots,s_{n} \right) \) е базис на линейно пространство, а \( \textbf{T}=\left( t_{1},\dots,t_{m} \right) \) е линейно независима система вектори в същото линейно пространство, то \( n \geq m \)
+    }
+
+    \solution{(Матрична перспеткива)
+      \textbf{S} е базис и следователно всеки вектор от \textbf{T} може да се изрази като линейна комбинация на вектори от \textbf{S} по следния начин:
+      \begin{equation} \label{eq:1}
+        t_{i}=\lambda_{1,i} s_{i} + \dots + \lambda_{n,i} s_{n}
+      \end{equation}
+      Тривиално е да се провери че условието е вярно за \( n=1 \).
+      Ще разгледаме случая, в който \( n > 1 \). Векторите \( (t_{1},\dots,t_{m}) \) са линейно зависими тогава и само тогава когато съществува тяхна нетъждествено нулева линейна комбинация равна на нулевия вектор на пространството:
+      \begin{align} \label{eq:2}
+        \alpha_{1}t_{1}+\dots+\alpha_{m}t_{m}=\vv{0} && \left( \alpha_{1},\dots,\alpha_{m} \right) \neq \left( 0,\dots,0 \right)
+      \end{align} 
+      Ползвайки \eqref{eq:1} и \eqref{eq:2} може да изразим условието за линейна зависимост на \( t_{1},\dots,t_{m} \) като това следната хомогенна система от линейни уравнения да има нетривиално решение:
+      \begin{gather}\label{eq:3}
+        \begin{pmatrix}
+          \lambda_{1, 1} & \lambda_{1, 2} & \lambda_{1, 3} & \dots & \lambda_{1, m} \\
+          \lambda_{2, 1} & \lambda_{2, 2} & \lambda_{2, 3} & \dots & \lambda_{2, m} \\
+          \vdots & \vdots & \vdots & \ddots & \vdots \\
+          \lambda_{n-1, 1} & \lambda_{n-1, 2} & \lambda_{n-1, 3} & \dots & \lambda_{n-1, m}  \\
+          \lambda_{n, 1} & \lambda_{n, 2} & \lambda_{n, 3} & \dots & \lambda_{n, m} 
+        \end{pmatrix}
+        \begin{pmatrix}
+          \alpha_{1} \\
+          \alpha_{2} \\
+          \vdots \\
+          \alpha_{m}
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+          0 \\
+          0 \\
+          \vdots \\
+          0
+        \end{pmatrix}
+      \end{gather}
+      Ще докажем съществуването на това нетривиално решение чрез индукция. Тъй като \( \textbf{T} \) е линейно независима система вектори, то \( t_{m} \neq \vv{0} \) и съществува индекс \( j \) с \( \lambda_{j,m} \neq 0 \). Без ограничение на общността може да приемем, че \( j = n \) и съответно \( \lambda_{n, m} \neq 0 \).
+      След добавяне на подходящи кратни на ред \( n \) към останалите редове на матрицата от \eqref{eq:3} с цел елиминация на елементите в колона \( m \) получаваме следното еквивалентно матрично уравнение:
+      \begin{gather}\label{eq:4}
+        \begin{pmatrix}
+          \mu_{1, 1} & \mu_{1, 2} & \mu_{1, 3} & \dots & 0 \\
+          \mu_{2, 1} & \mu_{2, 2} & \mu_{2, 3} & \dots & 0 \\
+          \vdots & \vdots & \vdots & \ddots & \vdots \\
+          \mu_{n-1, 1} & \mu_{n-1, 2} & \mu_{n-1, 3} & \dots & 0 \\
+          \lambda_{n, 1} & \lambda_{n, 2} & \lambda_{n, 3} & \dots & \lambda_{n, m} 
+        \end{pmatrix}
+        \begin{pmatrix}
+          \alpha_{1} \\
+          \alpha_{2} \\
+          \vdots \\
+          \alpha_{m}
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+          0 \\
+          0 \\
+          \vdots \\
+          0
+        \end{pmatrix}
+      \end{gather}
+      Матрицата вече има вид, които ни позволява да приложим индукция. От ред \( n \) може да изразим \( \alpha_{m} \):
+      \begin{equation*}
+        \alpha_{m}=\frac{\lambda_{n,1}\alpha_{1}+\dots+\lambda_{n,m-1}\alpha_{m-1}}{-\lambda_{n,m}}
+      \end{equation*}
+      от където следва че решенията на \eqref{eq:4} са в биективно съответсвие с решенията на системата:
+      \begin{gather} \label{eq:5}
+        \begin{pmatrix}
+          \mu_{1, 1} & \mu_{1, 2} & \mu_{1, 3} & \dots & \mu_{1,m-1} \\
+          \mu_{2, 1} & \mu_{2, 2} & \mu_{2, 3} & \dots & \mu_{2,m-1} \\
+          \vdots & \vdots & \vdots & \ddots & \vdots \\
+          \mu_{n-1, 1} & \mu_{n-1, 2} & \mu_{n-1, 3} & \dots & \mu_{n-1,m-1}
+        \end{pmatrix}
+        \begin{pmatrix}
+          \alpha_{1} \\
+          \alpha_{2} \\
+          \vdots \\
+          \alpha_{m-1}
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+          0 \\
+          0 \\
+          \vdots \\
+          0
+        \end{pmatrix}
+      \end{gather} 
+      Важно е да отбележим, че поне един от елементите в колона \( m-1 \) на матрицата е ненулев, което е ключово за да можем да приложим индукция, тъй като използвахме тъкмо това свойство на матрицата за да минем от \eqref{eq:3} към \eqref{eq:4}. Това е вярно, защото ако всичките елементи в колона \( m-1 \) са нули това би значело че \( t_{m-1} \) и \( t_{m} \) са линейно зависими(помислете защо).
+
+      Явният вид на съответсвието е:
+      \begin{equation*}
+        \left( \alpha_{1},\dots,\alpha_{m-1} \right) \longmapsto \left( \alpha_{1},\dots,\alpha_{m-1}, \frac{\lambda_{n,1}\alpha_{1}+\dots+\lambda_{n,m-1}\alpha_{m-1}}{-\lambda_{n,m}}\right)
+      \end{equation*}
+
+      От където веднага може да съобразим че \eqref{eq:4} има нетривиално решение тогава и само тогава когато \eqref{eq:5} има нетривиално решение. \\
+      Страхотно за нас, тъй като \eqref{eq:5} има нетривиално решение по индукционно предположение.
+      \qed
+    }
+
+
+
+    
+\end{document}
