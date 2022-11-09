@@ -1,0 +1,230 @@
+\documentclass[a4paper,12pt,fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[english,bulgarian]{babel}
+\usepackage{amsthm,amsfonts,amsmath,amssymb,bbm}
+\usepackage{fullpage}
+\usepackage{enumitem}
+\setlist[enumerate]{label=\alph*.,itemsep=1pt, topsep=0pt}
+
+\newcommand{\rvline}{\hspace*{-\arraycolsep}\vline\hspace*{-\arraycolsep}}
+
+\newcounter{problem}
+\newcommand\problem{%
+  \stepcounter{problem}%
+  \textbf{Задача \theproblem.}~%
+}
+\newcommand\solution{%
+  \textbf{Решение:}~%
+}
+\parindent 0in
+\parskip 1em
+\title{Действия с матрици}
+\author{Антъни Господинов}
+\date{}
+
+\begin{document}
+    \maketitle{}
+
+    \problem{Да се пресметне произведението \( AB \) за: 
+      \begin{enumerate}
+        \item 
+        \( A = 
+          \begin{bmatrix}
+            1 & 2 & 3 \\
+            3 & 3 & 1
+          \end{bmatrix}
+        \),
+        \( B = 
+          \begin{bmatrix}
+            -8 & -4 \\
+             \phantom{-}9 & \phantom{-}5  \\
+            -3 & -2
+          \end{bmatrix}
+        \)
+        \item 
+        \( A = 
+           \begin{bmatrix}
+              1 & 4 \\
+              1 & 2
+           \end{bmatrix}
+        \),
+        \( B = 
+           \begin{bmatrix}
+              6 & -4 \\
+              3 & \phantom{-} 2
+           \end{bmatrix}
+        \)
+      \end{enumerate}
+    }
+
+    \problem{
+      Нека 
+      \( A = \left[ a_{1},\dots,a_{n} \right] \) е вектор ред, а 
+      \( B = \begin{bmatrix}
+        b_{1} \\
+        \vdots \\
+        b_{n}
+      \end{bmatrix} \) е вектор стълб. Да се пресметнат произведенията \( AB \) и \( BA \)
+    }
+
+    \problem{
+      Нека \( A, B \) и \( C \) са матрици с размери \( l \times m, m \times n \) и \( n \times p \). Колко умножения са нужни за да пресметнем произведението \( AB \)? В какъв ред трябва да пресметнем тройното произведение \( ABC \), ако искаме да минимизираме броя на умноженията?
+    }
+    
+    \problem{
+      Пресметнете \( 
+        \begin{bmatrix}
+          1 & a \\
+          0 & 1
+        \end{bmatrix}
+        \begin{bmatrix}
+          1 & b \\
+          0 & 1
+        \end{bmatrix}  
+      \) и \(
+        \begin{bmatrix}
+          1 & a \\
+          0 & 1
+        \end{bmatrix}^{n} 
+      \)
+    }
+
+    \problem{
+      Намерете формула за \(
+        \begin{bmatrix}
+          1 & 1 & 1 \\
+          0 & 1 & 1 \\
+          0 & 0 & 1
+        \end{bmatrix}^{n} \) и я докажете с индукция.
+    }
+
+    \problem{Пресметнете следните произведения с блочно умножение:
+        \begin{center}
+        \(
+          \begin{bmatrix}
+            \begin{matrix}
+              1 & 1 \\
+              0 & 1
+            \end{matrix}
+            & \rvline &
+            \begin{matrix}
+              1 & 5 \\
+              0 & 1
+            \end{matrix} \\
+            \hline
+            \begin{matrix}
+              1 & 0 \\
+              0 & 1
+            \end{matrix}
+            & \rvline &
+            \begin{matrix}
+              0 & 1 \\
+              1 & 0
+            \end{matrix}
+          \end{bmatrix} \)
+          \(\begin{bmatrix}
+            \begin{matrix}
+              1 & 2 \\
+              0 & 1
+            \end{matrix}
+            & \rvline &
+            \begin{matrix}
+              1 & 0 \\
+              0 & 1
+            \end{matrix} \\
+            \hline
+            \begin{matrix}
+              1 & 0 \\
+              0 & 1
+            \end{matrix}
+            & \rvline &
+            \begin{matrix}
+              0 & 1 \\
+              1 & 3
+            \end{matrix}
+          \end{bmatrix}
+        \),
+        \(
+          \begin{bmatrix}
+            0
+            & \rvline &
+            \begin{matrix}
+              1 & 2
+            \end{matrix} \\
+            \hline 
+            \begin{matrix}
+              0 \\
+              3
+            \end{matrix}
+            & \rvline & 
+            \begin{matrix}
+              1 & 0 \\
+              0 & 1
+            \end{matrix}
+          \end{bmatrix}
+        \)
+        \( 
+          \begin{bmatrix}
+            1
+            & \rvline &
+            \begin{matrix}
+              2 & 3
+            \end{matrix} \\
+            \hline 
+            \begin{matrix}
+              4 \\
+              5
+            \end{matrix}
+            & \rvline & 
+            \begin{matrix}
+              2 & 3 \\
+              0 & 4
+            \end{matrix}
+          \end{bmatrix}
+         \)
+        \end{center}
+    }
+
+    \problem{
+      Нека \( D \) e диагонална матрица с елементи \( d_{1},\dots,d_{n} \) и нека \( A = \left( a_{ij} \right) \) е произволна \( n \times n \) матрица. Пресметнете произведенията \( DA \) и \( AD \). 
+    }
+
+    \problem{
+      Докажете, че произведението на две горнотриъгълни матрици също е горнотриъгълна матрица.
+    }
+
+    \problem{
+      Казваме, че матриците \( A \) и \( B \) комутират, ако \( AB = BA \). Да се намерят всички матрици, които комутират с:
+        \begin{enumerate}
+          \item \( 
+            \begin{bmatrix}
+              1 & 0 \\
+              0 & 0
+            \end{bmatrix} \)
+          \item \( 
+            \begin{bmatrix}
+              0 & 1 \\
+              0 & 0
+            \end{bmatrix} \)
+          \item \( 
+            \begin{bmatrix}
+              1 & 3 \\
+              0 & 1
+            \end{bmatrix} \)
+        \end{enumerate}
+    }
+    \problem{
+      \textit{Следата} на квадратна матрица е сумата на елементите по диагонала: 
+      \begin{center}
+        \( tr(A) = a_{11} + a_{22} + \dots + a_{nn} \)
+      \end{center}
+      Докажете, че \( tr(A+B) = tr(A) + tr(B) \) и също
+       \( tr(AB) = tr(BA) \)
+    }
+
+    \problem{
+      Докажете, че уравнението \( AB - BA = E \) няма решение в пространството на квадратните \( n \times n \) матрици с елементи от полето на реалните числа(\textit{понякога това пространство се означава като: \( M_{n,n}\left( \mathbb{R} \right) \)})
+    }
+
+\end{document}
